@@ -1,18 +1,15 @@
-//npm - global command, comes with node
-//npm -version
+const http = require('http')
 
-//local dependency - use it only in this particular project
-//npm  i <packageName>
+// const server = http.createServer((req,res)=>{
+//     res.end('Welcome') 
+// })
 
-//global dependency - use it in any project
-//npm install -g <packageName>
+//Using Event Emitter API
+const server=http.createServer()
+// emits request event
+//subscribe to it / listen to it / respond to it
+server.on('request', (req, res)=>{
+    res.end('Welcome')
+})
 
-//package.json -manifest file(stores important info about project/package)
-//manual approach (create package.json in the rooot, create properties etc)
-//npm init(step by step, press enter to skip)
-//npm init -y (everything default)
-
-const lodash=require('lodash');
-const items=[1,[2,[3,[4]]]]
-const newItems=lodash.flattenDeep(items)
-console.log(newItems)
+server.listen(5000)
